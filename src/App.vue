@@ -6,7 +6,7 @@
 
 <style>
 html {
-	background-image: linear-gradient(rgb(228, 128, 62), rgb(160, 15, 204));
+	background-image: linear-gradient(rgb(250, 150, 80), rgb(160, 15, 204));
 	background-attachment: fixed;
 	height: 100%;
 }
@@ -33,21 +33,21 @@ html {
 
 /* Scrollbar Start */
 body {
-  scroll-behavior: smooth;
-  overflow-y: auto;
+	scroll-behavior: smooth;
+	overflow-y: auto;
 }
 body::-webkit-scrollbar {
-  width: 10px;
+	width: 10px;
 }
 body::-webkit-scrollbar-track {
-  background-image: linear-gradient(rgb(228, 128, 62), rgb(160, 15, 204));
+	background-image: linear-gradient(rgb(250, 150, 80), rgb(160, 15, 204));
 }
 body::-webkit-scrollbar-thumb {
-  background: rgb(44, 62, 80);
-  border-radius: 8px;
+	background: rgb(44, 62, 80);
+	border-radius: 8px;
 }
 body::-webkit-scrollbar-thumb:hover {
-  background: rgb(64, 82, 100);
+	background: rgb(64, 82, 100);
 }
 /* Scrollbar End */
 </style>
