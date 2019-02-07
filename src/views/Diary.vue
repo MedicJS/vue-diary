@@ -25,50 +25,30 @@ window.onbeforeunload = function(e) {
 };
 
 import DiaryEntry from "../components/DiaryEntry";
+import { mapState } from "vuex";
 
 export default {
 	name: "Diary",
 	components: {
 		DiaryEntry
 	},
-	mounted() {
-		this.load();
-	},
-	data() {
-		return {
-			entries: []
-		};
+	mounted() {},
+	computed: {
+		...mapState(["entries"])
 	},
 	methods: {
-		save() {
-			localStorage.entries = JSON.stringify(this.entries);
-		},
-		load() {
-			let storedEntries = JSON.parse(localStorage.entries);
-			this.entries = storedEntries.length
-				? storedEntries
-				: [{ title: "", content: "", editing: true }];
-		},
 		entryToggledState(entry) {
 			if (entry.editing) return;
 
-			this.checkReplaceNewEntry();
-			this.save();
-		},
-		deleteEntry(index) {
-			this.entries.splice(index, 1);
-
-			this.checkReplaceNewEntry();
-			this.save();
-		},
-		checkReplaceNewEntry() {
-			if (this.entries.every(e => !e.editing)) {
-				this.entries.splice(0, 0, {
+			if (this.entries.every(e => !e.editing))
+				this.$store.dispatch("addEntry", {
 					title: "",
 					content: "",
 					editing: true
 				});
-			}
+		},
+		deleteEntry(index) {
+			this.$store.dispatch("removeEntry", index);
 		}
 	}
 };
@@ -80,8 +60,8 @@ export default {
 	height: 100%;
 }
 h1 {
-	font-family:monospace;
-    font-size: 24pt;
+	font-family: monospace;
+	font-size: 24pt;
 }
 .entriesWrapper {
 	display: flex;
