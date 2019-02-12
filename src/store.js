@@ -24,6 +24,13 @@ export default new Vuex.Store({
 	actions: {
 		removeEntry({ state, getters, commit, dispatch }, index) {
 			commit('removeEntry', index);
+
+			if (!state.entries.length)
+				dispatch('addEntry', {
+					title: '',
+					content: '',
+					editing: true,
+				});
 		},
 		addEntry({ state, getters, commit, dispatch }, payload) {
 			commit('addEntry', payload);

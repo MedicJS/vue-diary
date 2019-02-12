@@ -32,7 +32,14 @@ export default {
 	components: {
 		DiaryEntry
 	},
-	mounted() {},
+	mounted() {
+		if (!this.entries.length)
+			this.$store.dispatch("addEntry", {
+				title: "",
+				content: "",
+				editing: true
+			});
+	},
 	computed: {
 		...mapState(["entries"])
 	},
